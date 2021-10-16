@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+import lbin
+import lbin.bch
+import lbin.bch
+from pathlib import Path
+import sys
+from lbin.bch.func import lmap
+from lbin.bch.hag import gather
+
+PROG=Path(sys.argv[0]).name
+ARGS=sys.argv[1:]
+USAGE=f"""
+USAGE:
+    {PROG} [PATH [PATH [...]]]
+    {PROG} -h|--help
+DESCRIPTION:
+    For each PATH, print the [*/.bch] directories reachable
+    from PATH.  If PATH is omitted, then print this help.
+"""
+
+if __name__ == '__main__':
+    if not ARGS:            sys.stdout.write(USAGE); exit()
+    if ARGS[0] == '-h':     sys.stdout.write(USAGE); exit()
+    if ARGS[0] == '--help': sys.stdout.write(USAGE); exit()
+    for arg in ARGS:
+        for path in gather(Path(arg)):
+            print(path)

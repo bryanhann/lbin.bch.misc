@@ -1,0 +1,12 @@
+#!/bin/bash
+[ "$1" == "" ] && exit 1
+TARGET=$1
+CUR=$2
+[ "$CUR" = "" ] && CUR=$PWD
+
+while true; do
+    [ -d $CUR/$TARGET ] && echo $CUR/$TARGET/ && exit 0
+    [ -f $CUR/$TARGET ] && echo $CUR/$TARGET  && exit 0
+    [ $CUR = $(dirname $CUR) ] && exit 1
+    CUR=$(dirname $CUR)
+done
