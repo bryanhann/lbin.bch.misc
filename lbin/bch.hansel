@@ -10,11 +10,11 @@ PROG=Path(sys.argv[0]).name
 ARGS=sys.argv[1:]
 USAGE=f"""
 USAGE:
-    {PROG} [PATH [PATH [...]]]
+    {PROG} PATH [PATH ...]
     {PROG} -h|--help
 DESCRIPTION:
-    For each PATH, print the [*/.bch] directories reachable
-    from PATH.  If PATH is omitted, then print this help.
+    Print each [*/.bch] reachable from each PATH provided.
+    If PATH is omitted, then print this help.
 """
 
 if __name__ == '__main__':
