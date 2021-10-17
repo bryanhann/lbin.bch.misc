@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-import lbin
-import lbin.bch
-import lbin.bch
-from pathlib import Path
+
 import sys
+from pathlib import Path
+
 from lbin.bch.func import lmap
 from lbin.bch.hag import gather
 
