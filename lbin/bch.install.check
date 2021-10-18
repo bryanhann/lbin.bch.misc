@@ -1,0 +1,19 @@
+#!/bin/sh
+
+#
+# Outputs a script which can be run to install missing apps
+#
+
+main () {
+    check nmap      sudo install nmap
+    check pipx      sudo apt install pipx
+    check poetry    pipx install poetry
+}
+
+check () {
+    p=$(which $1) && echo "# [$1] found at [$p]" && return
+    echo "# [$1] is missing." ; shift ; echo $*
+}
+
+main 
+
