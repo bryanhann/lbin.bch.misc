@@ -1,0 +1,26 @@
+#!/bin/sh
+#VERSION=$(poetry version -s)
+VERSION=0.1.2
+echo }} ./test
+./test || {
+    echo test failed. not patching.
+    exit
+}
+echo }} git rm -rf ./dist
+        git rm -rf ./dist
+echo }} rm -rf ./dist
+        rm -rf ./dist
+echo }} poetry version patch
+        poetry version patch
+        VERSION=v$(poetry version -s)
+echo }} poetry build
+        poetry build
+echo }} git status
+        git status
+echo }} git add .
+        git add .
+echo }} git status
+        git status
+        git commit -m "Version $VERSION" -t ./tmp
+        git tag $VERSION
+        git push --tag
